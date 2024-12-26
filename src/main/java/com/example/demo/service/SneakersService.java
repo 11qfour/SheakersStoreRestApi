@@ -32,7 +32,7 @@ public class SneakersService {
                 ()->new RuntimeException("Кроссовок с таким id: %d не существует".formatted(id))
         );
         sneakers.setSneakerModel(sneakersDetails.getSneakerModel());
-        sneakers.setType(sneakersDetails.getType());
+        sneakers.setSize(sneakersDetails.getSize());
         return sneakersRepository.save(sneakers);
     }
 
