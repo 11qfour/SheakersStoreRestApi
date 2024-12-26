@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Sneakers;
+import com.example.demo.DTO.SneakersDtoRequest;
+import com.example.demo.DTO.SneakersDtoResponse;
 import com.example.demo.service.SneakersService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.HttpStatus;
@@ -19,28 +21,27 @@ public class SneakersController {
     private SneakersService sneakersService;
 
     @GetMapping
-    public ResponseEntity<List<Sneakers>> getAllSneakers(){
-        return ResponseEntity.status(HttpStatus.OK).body(sneakersService.findAll());
+    public List<SneakersDtoResponse> getAllSneakers(){
+        return sneakersService.getAllSneakers();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Sneakers> getSneakersById(@PathVariable Long id){
-        return ResponseEntity.status(HttpStatus.OK).body(sneakersService.findById(id)); //200
+    public SneakersDtoResponse getSneakersById(@PathVariable Long id){
+        return sneakersService.getSneakersById(id); //200
     }
 
     @PostMapping
-    private ResponseEntity<Sneakers> createSneakers(@RequestBody Sneakers sneakers){
-        return ResponseEntity.status(HttpStatus.CREATED).body(sneakersService.create(sneakers));//201
+    private SneakersDtoResponse createSneakers(@Valid @RequestBody SneakersDtoRequest sneakersDto){
+        return sneakersService.create(sneakersDto);//201
     }
 
     @PutMapping("/{id}")
-    private ResponseEntity<Sneakers> updateSneakers(@PathVariable Long id, @RequestBody Sneakers sneakers){
-        return ResponseEntity.status(HttpStatus.OK).body(sneakersService.update(id,sneakers));
+    private SneakersDtoResponse updateSneakers(@PathVariable Long id,@Valid @RequestBody SneakersDtoRequest sneakersDto){
+        return sneakersService.updateSneakers(id,sneakersDto);
     }
 
     @DeleteMapping ("/{id}")
-    private ResponseEntity<Void> deleteSneakers(@PathVariable Long id){ //пафвариабл позволяет извлечь значение айди
-        sneakersService.delete(id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); //204 успешный запрос без содержимого
+    private void deleteSneakers(@PathVariable Long id){ //пафвариабл позволяет извлечь значение айди
+        sneakersService.deleteSneakers(id);
     }
 }
