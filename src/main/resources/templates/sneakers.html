@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Кроссовки в магазине</title>
+</head>
+<body>
+<h1>Кроссовки в наличии</h1>
+<a th:href="@{/sneakers/create}">Добавить новые кроссовки</a>
+<table border=1>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Модель</th>
+        <th>Размер</th>
+        <th>Цена</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="sneaker : ${sneakers}">
+        <td th:text="${sneaker.id}"></td>
+        <td th:text="${sneaker.sneakerModel}"></td>
+        <td th:text="${sneaker.size}"></td>
+        <td th:text="${sneaker.price}"></td>
+        <td>
+            <a th:href="@{/sneakers/{id}(id=${sneaker.id})}">Просмотр</a>
+            <a th:href="@{/sneakers/{id}/edit(id=${sneaker.id})}">Редактировать</a>
+            <a th:href="@{/sneakers/{id}/delete(id=${sneaker.id})}">Удалить</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

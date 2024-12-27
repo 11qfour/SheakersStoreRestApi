@@ -30,27 +30,27 @@ public class SneakersService {
 
     public SneakersDtoResponse create(SneakersDtoRequest sneakersDto){   //метод создания кроссовок
         Sneakers sneakers = sneakersMapper.toEntity(sneakersDto);
-
+        sneakers.setSneakerModel(sneakersDto.getSneakerModel());
         //установка категории
         SneakersType sneakersType = sneakersTypeRepository.findById(sneakersDto.getSneakersTypeId()).orElseThrow(() ->
                 new ResourceNotFoundException("Тип кроссовок не найден с id: " + sneakersDto.getSneakersTypeId()));
         sneakers.setSneakersType(sneakersType);
 
         //установка поставщиков
-        Set<Supplier> suppliers = sneakersDto.getSupplierIds().stream()
+        /*Set<Supplier> suppliers = sneakersDto.getSupplierIds().stream()
                 .map(supplierId -> supplierRepository.findById(supplierId).orElseThrow(() ->
                         new ResourceNotFoundException("Поставщик не найден с id: " + supplierId)))
                 .collect(Collectors.toSet());
-        sneakers.setSuppliers(suppliers);
+        sneakers.setSuppliers(suppliers);*/
 
         var savedProduct = sneakersRepository.save(sneakers);
         return sneakersMapper.toDto(savedProduct);
     }
 
     public SneakersDtoResponse getSneakersById(Long id){
-        var product = sneakersRepository.findById(id).orElseThrow(() ->
+        var sneakers = sneakersRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("Кроссовки не найдены с id: " + id));
-        return sneakersMapper.toDto(product);
+        return sneakersMapper.toDto(sneakers);
     }
 
     public List<SneakersDtoResponse> getAllSneakers(){

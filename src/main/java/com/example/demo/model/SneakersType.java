@@ -24,8 +24,8 @@ public class SneakersType {
     @Column(nullable = true)
     private String description;
 
-    @OneToMany(mappedBy = "sneakersType") //mappedBy - сторона, которая содержит связь, находится в классе Sneakers
-    private Set<Sneakers> products = new HashSet<>();
+    @OneToMany(mappedBy = "sneakersType", cascade = CascadeType.ALL) //mappedBy - сторона, которая содержит связь, находится в классе Sneakers
+    private Set<Sneakers> sneakers = new HashSet<>();
 
     @Override
     public final boolean equals(Object object) { //сравнение двух объектов по id и классам
