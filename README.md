@@ -196,22 +196,22 @@ src/
 Ниже приведены скриншоты выполнения вышеуказанных `cURL`-запросов в терминале:
 
 #### Создание клиента
-![Создание клиента](https://github.com/11qfour/HoroscopePredsazTGBot/blob/src/main/resources/media/customer.png)
+![Создание клиента](https://github.com/11qfour/SheakersStoreRestApi/tree/main/src/main/resources/media/customer.png)
 
 #### Получение всех кроссовок
-![Список кроссовок](https://github.com/11qfour/HoroscopePredsazTGBot/blob/src/main/resources/media/sneakers.png)
+![Список кроссовок](https://github.com/11qfour/SheakersStoreRestApi/tree/main/src/main/resources/media/sneakers.png)
 
 #### Обновление типа кроссовок
-![Обновление типа кроссовок](https://github.com/11qfour/HoroscopePredsazTGBot/blob/src/main/resources/media/sneakerstype.png)
+![Обновление типа кроссовок](https://github.com/11qfour/SheakersStoreRestApi/tree/main/src/main/resources/media/sneakerstype.png)
 
 #### Создание поставщика
-![Создание поставщика](https://github.com/11qfour/HoroscopePredsazTGBot/blob/src/main/resources/media/supplier.png)
+![Создание поставщика](https://github.com/11qfour/SheakersStoreRestApi//tree/main/src/main/resources/media/supplier.png)
 
 ---
 
 * Тестирование программы при помощи Swagger
 
-![Контроллеры](https://github.com/11qfour/HoroscopePredsazTGBot/blob/src/main/resources/media/swaggerConroller.png)
+![Контроллеры](https://github.com/11qfour/SheakersStoreRestApi//tree/main/src/main/resources/media/swaggerConroller.png)
 
 ✉️ Контакты
 
