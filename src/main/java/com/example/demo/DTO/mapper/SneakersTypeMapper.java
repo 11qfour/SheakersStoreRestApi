@@ -1,13 +1,10 @@
 package com.example.demo.DTO.mapper;
 
-import com.example.demo.DTO.SneakersDtoRequest;
 import com.example.demo.DTO.SneakersTypeDtoRequest;
 import com.example.demo.DTO.SneakersTypeDtoResponse;
 import com.example.demo.model.Sneakers;
 import com.example.demo.model.SneakersType;
-import com.example.demo.model.Supplier;
 import org.mapstruct.*;
-import org.mapstruct.factory.Mappers;
 
 import java.util.Set;
 import java.util.stream.Collectors;

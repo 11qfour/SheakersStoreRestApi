@@ -1,10 +1,11 @@
 package com.example.demo.model;
 
+import com.example.demo.serializer.SupplierSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import javax.annotation.processing.Generated;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -25,7 +26,11 @@ public class Sneakers {
     private double size;
     private int price;
 
-    @ManyToMany(mappedBy = "sneakers", cascade = {CascadeType.PERSIST, CascadeType.MERGE}) //каскадное сохранение и обновление
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "sneakers_suppliers",
+            joinColumns = @JoinColumn(name = "sneakers_id"), // внешний ключ для Sneakers
+            inverseJoinColumns = @JoinColumn(name = "supplier_id")) // внешний ключ для Supplier
+    @JsonSerialize(using = SupplierSerializer.class) // Применяем сериализатор*/
     private Set<Supplier> suppliers = new HashSet<>();
 
     @ManyToOne

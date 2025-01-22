@@ -25,10 +25,7 @@ public class Supplier {
     private String name;
     private String contactNumber;
 
-    @ManyToMany
-    @JoinTable(name = "suppliers",
-            joinColumns = @JoinColumn(name = "supplier_id"), //supplier_id - внешний ключ для Supplier
-            inverseJoinColumns = @JoinColumn(name = "sneakers_id")) //sneakers_id - внешний ключ для Product
+    @ManyToMany(mappedBy = "suppliers", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Sneakers> sneakers = new HashSet<>();
 
     @Override

@@ -44,4 +44,10 @@ public class SneakersController {
     private void deleteSneakers(@PathVariable Long id){ //пафвариабл позволяет извлечь значение айди
         sneakersService.deleteSneakers(id);
     }
+
+    @PostMapping("/addRelation")
+    public ResponseEntity<String> addSneakerSupplierRelation(@RequestParam Long sneakersId, @RequestParam Long supplierId) {
+        sneakersService.addSneakerAndSupplierRelation(sneakersId, supplierId);
+        return ResponseEntity.ok("Relation added successfully");
+    }
 }

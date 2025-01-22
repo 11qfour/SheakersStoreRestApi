@@ -1,6 +1,5 @@
 package com.example.demo.DTO;
 
-import com.example.demo.model.Sneakers;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Value;
 
